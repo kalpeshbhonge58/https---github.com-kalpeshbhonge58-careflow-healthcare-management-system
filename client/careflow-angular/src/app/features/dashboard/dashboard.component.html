@@ -1,0 +1,35 @@
+<main class="workspace">
+  <header class="topbar">
+    <a class="logo" routerLink="/dashboard"><span>CF</span> CareFlow</a>
+    <div class="account">
+      <div class="avatar">{{ (authService.getCurrentUser()?.firstName ?? 'U').charAt(0) }}</div>
+      <div class="account-copy">
+        <strong>{{ authService.getCurrentUser()?.fullName || authService.getCurrentUser()?.firstName }}</strong>
+        <small>{{ authService.getCurrentUser()?.roles?.join(' · ') }}</small>
+      </div>
+      <button class="logout" type="button" (click)="authService.logout()">Sign out</button>
+    </div>
+  </header>
+
+  <section class="content">
+    <p class="eyebrow">CareFlow workspace</p>
+    <h1>{{ pageTitle }}</h1>
+    <p class="lead">Your secure workspace is ready. Use the navigation to move through the care operations available to your role.</p>
+
+    <nav class="workspace-nav" aria-label="Workspace navigation">
+      <a routerLink="/dashboard">Overview</a>
+      <a routerLink="/patients">Patients</a>
+      <a routerLink="/doctors">Doctors</a>
+      <a routerLink="/appointments">Appointments</a>
+      <a routerLink="/medical-records">Medical records</a>
+      <a routerLink="/prescriptions">Prescriptions</a>
+      <a routerLink="/billing">Billing</a>
+    </nav>
+
+    <div class="status-grid">
+      <article><span class="status-dot"></span><p>Identity verified</p><strong>{{ authService.getCurrentUser()?.email }}</strong></article>
+      <article><span class="status-dot"></span><p>Session active</p><strong>Protected API access enabled</strong></article>
+      <article><span class="status-dot"></span><p>Access level</p><strong>{{ authService.getCurrentUser()?.roles?.join(', ') }}</strong></article>
+    </div>
+  </section>
+</main>

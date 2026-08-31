@@ -1,0 +1,70 @@
+@model CareFlow.Mvc.ViewModels.Reports.AppointmentsReportViewModel
+@using CareFlow.Mvc.ViewModels.Reports
+@{
+    ViewData["Title"] = "Appointments Report";
+    var apiConfig = ViewBag.ApiConfig as ReportsPageViewModel ?? new ReportsPageViewModel();
+}
+
+<div id="reports-config"
+     data-api-base-url="@apiConfig.ApiBaseUrl"
+     data-api-token="@apiConfig.ApiToken"
+     data-report-type="appointments">
+</div>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 mb-1">Appointments Report</h1>
+        <p class="text-muted mb-0">Filtered appointment data from the Web API</p>
+    </div>
+</div>
+
+@await Html.PartialAsync("_ReportFilters", new ReportFilterViewModel
+{
+    FilterType = "appointments",
+    SelectedStatus = Model.SelectedStatus,
+    SelectedDoctorId = Model.SelectedDoctorId
+})
+
+<div id="report-alert" class="alert alert-danger d-none" role="alert"></div>
+
+<div class="card shadow-sm">
+    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+        <h5 class="card-title mb-0">Appointments (@Model.Appointments.Count)</h5>
+        <span class="badge bg-secondary" id="refresh-indicator">Ready</span>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0" id="appointments-table">
+                <thead class="table-light">
+                    <tr>
+                        <th>Patient</th>
+                        <th>Doctor</th>
+                        <th>Department</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Reason</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var appt in Model.Appointments)
+                    {
+                        <tr>
+                            <td>@appt.PatientName<br /><small class="text-muted">@appt.PatientNumber</small></td>
+                            <td>@appt.DoctorName</td>
+                            <td>@appt.DepartmentName</td>
+                            <td>@appt.AppointmentDate.ToString("d")</td>
+                            <td>@appt.StartTime.ToString(@"hh\:mm") - @appt.EndTime.ToString(@"hh\:mm")</td>
+                            <td><span class="badge bg-secondary">@appt.Status</span></td>
+                            <td>@appt.Reason</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/reports.js" asp-append-version="true"></script>
+}

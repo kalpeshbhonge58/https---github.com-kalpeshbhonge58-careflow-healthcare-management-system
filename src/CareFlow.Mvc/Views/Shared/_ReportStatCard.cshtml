@@ -1,0 +1,19 @@
+@model (string Label, string Value, string Icon, string Color)
+
+<div class="col-md-4 col-xl-2">
+    <div class="card shadow-sm border-0 h-100">
+        <div class="card-body">
+            <div class="d-flex align-items-center">
+                <div class="flex-shrink-0">
+                    <span class="badge bg-@Model.Color rounded-pill p-2">
+                        <i class="bi @Model.Icon"></i>
+                    </span>
+                </div>
+                <div class="flex-grow-1 ms-3">
+                    <div class="text-muted small">@Model.Label</div>
+                    <div class="fs-5 fw-semibold stat-value">@Model.Value</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+:host { display: block; min-height: 100vh; background: #f4f1eb; color: #173b3f; }
+.workspace { min-height: 100vh; }
+.topbar { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem clamp(1.25rem, 5vw, 5rem); border-bottom: 1px solid #dbe2db; background: #fffdf8; }
+.logo { color: #173b3f; text-decoration: none; font-family: Georgia, 'Times New Roman', serif; font-size: 1.35rem; }
+.logo span { display: inline-grid; place-items: center; width: 2rem; height: 2rem; margin-right: 0.55rem; background: #e7bd77; font: 700 0.75rem Arial, sans-serif; vertical-align: middle; }
+.account { display: flex; align-items: center; gap: 0.7rem; }
+.avatar { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: #1f6460; color: #fff; font-weight: 700; }
+.account-copy { display: grid; gap: 0.12rem; }
+.account-copy strong { font-size: 0.8rem; }
+.account-copy small { color: #71817d; font-size: 0.68rem; }
+.logout { border: 1px solid #cbd8d1; padding: 0.55rem 0.8rem; background: transparent; color: #31575a; font: inherit; font-size: 0.75rem; cursor: pointer; }
+.logout:hover { border-color: #1f6460; color: #1f6460; }
+.content { max-width: 72rem; margin: auto; padding: clamp(3rem, 8vw, 7rem) clamp(1.25rem, 5vw, 5rem); }
+.eyebrow { margin: 0 0 1rem; color: #b07d3a; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15rem; text-transform: uppercase; }
+h1 { margin: 0; font: 400 clamp(3rem, 7vw, 6.5rem)/0.95 Georgia, 'Times New Roman', serif; }
+.lead { max-width: 42rem; margin: 1.5rem 0 3rem; color: #637577; font-size: 1.05rem; line-height: 1.7; }
+.workspace-nav { display: flex; flex-wrap: wrap; gap: 0.6rem; padding-bottom: 2.5rem; border-bottom: 1px solid #dbe2db; }
+.workspace-nav a { padding: 0.7rem 0.9rem; background: #e4eee7; color: #1f6460; text-decoration: none; font-size: 0.8rem; }
+.workspace-nav a:hover { background: #d3e3da; }
+.status-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+.status-grid article { padding: 1.25rem; background: #fffdf8; border-top: 3px solid #e7bd77; }
+.status-dot { display: block; width: 0.5rem; height: 0.5rem; margin-bottom: 1.2rem; border-radius: 50%; background: #2e936b; }
+.status-grid p { margin: 0 0 0.45rem; color: #71817d; font-size: 0.75rem; }
+.status-grid strong { font-size: 0.88rem; overflow-wrap: anywhere; }
+@media (max-width: 700px) { .topbar { align-items: flex-start; gap: 1rem; } .account-copy { display: none; } .status-grid { grid-template-columns: 1fr; } }
